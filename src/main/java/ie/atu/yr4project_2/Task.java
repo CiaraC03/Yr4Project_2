@@ -14,8 +14,7 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-
-public class User {
+public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -27,10 +26,4 @@ public class User {
     private LocalDateTime dueDate;
     @NotBlank(message = "Priority can't be blank")
     private int priority;
-
-
-
-
-
-
 }
