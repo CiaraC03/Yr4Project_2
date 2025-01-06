@@ -26,7 +26,7 @@ public class Task {
     @NotBlank(message = "Description can't be blank")
     private String description;
     @FutureOrPresent(message = "Date cannot be in the past")
-    private LocalDateTime dueDate;
+    private String dueDate;
     @NotNull(message = "Priority can't be blank")
     private int priority;
 }
