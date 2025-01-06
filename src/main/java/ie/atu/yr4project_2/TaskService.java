@@ -13,24 +13,24 @@ public class TaskService {
 
     private List<Task> taskList = new ArrayList<>();
 
-    private UserRepository userRepository;
+    private TaskRepository taskRepository;
 
-    public TaskService(UserRepository userRepository)
+    public TaskService(TaskRepository taskRepository)
     {
-        this.userRepository = userRepository;
+        this.taskRepository = taskRepository;
     }
 
     public List<Task> getTasks(){
-        return userRepository.findAll();
+        return taskRepository.findAll();
     }
 
     public List<Task> createTask(Task task){
-        userRepository.save(task);
-        return userRepository.findAll();
+        taskRepository.save(task);
+        return taskRepository.findAll();
     }
 
     public Task findTaskById(Long id) {
-        return userRepository.findById(id).orElseThrow(
+        return taskRepository.findById(id).orElseThrow(
                 () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Could not find product."));
     }
 
@@ -41,13 +41,13 @@ public class TaskService {
         existingTask.setDescription(updatedTask.getDescription());
         existingTask.setDueDate(updatedTask.getDueDate());
         existingTask.setPriority(updatedTask.getPriority());
-        return userRepository.save(existingTask);
+        return taskRepository.save(existingTask);
 
     }
 
     public List<Task> deleteTask(Long id) {
-        if(userRepository.existsById(id)){
-            userRepository.deleteById(id);
+        if(taskRepository.existsById(id)){
+            taskRepository.deleteById(id);
         }
 
 

@@ -14,10 +14,12 @@ public class TaskController {
     private List<Task> taskList = new ArrayList<>();
 
     private TaskService taskService;
+    private TaskClient taskClient;
 
     @Autowired
-    public TaskController(TaskService taskService){
+    public TaskController(TaskService taskService, TaskClient taskClient){
         this.taskService = taskService;
+        this.taskClient = taskClient;
     }
 
     @GetMapping("tasks")
