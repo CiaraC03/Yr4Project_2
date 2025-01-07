@@ -38,13 +38,13 @@ public class TaskController {
         return ResponseEntity.ok(taskList);
     }
 
-    @PutMapping("/updateTasks/{id}")
+    @PutMapping("/updateTasks")
     public ResponseEntity<Task> updateTask(@PathVariable Long id, @RequestBody Task updatedTask) {
         Task update = taskService.updateTask(id, updatedTask);
         return ResponseEntity.ok(update);
     }
 
-    @DeleteMapping("/deleteProduct/{id}")
+    @DeleteMapping("/deleteProduct")
     public ResponseEntity<List<Task>> deleteTask(@PathVariable Long id) {
         List<Task> taskList = taskService.deleteTask(id);
         return ResponseEntity.ok(taskList);
