@@ -15,9 +15,14 @@ public class TaskService {
 
     private TaskRepository taskRepository;
 
-    public TaskService(TaskRepository taskRepository)
+    private TaskClient taskClient;
+
+
+    public TaskService(TaskRepository taskRepository, TaskClient taskClient)
     {
         this.taskRepository = taskRepository;
+        this.taskClient = taskClient;
+
     }
 
     public List<Task> getTasks(){
@@ -25,6 +30,11 @@ public class TaskService {
     }
 
     public List<Task> createTask(Task task){
+        User user = taskClient.getUserId(task.getUserId());
+        if (user == null) {
+            throw new IllegalArgumentException("User with userId " + task.getUserId() + " does not exist.");
+        }
+
         taskRepository.save(task);
         return taskRepository.findAll();
     }

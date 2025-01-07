@@ -17,15 +17,13 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Document(collection = "tasks")
 public class Task {
-    @Id
-    private Long id;
     @NotNull(message = "User Id can't be blank")
     private Long userId;
     @NotBlank(message = "Title can't be blank")
     private String title;
     @NotBlank(message = "Description can't be blank")
     private String description;
-    @FutureOrPresent(message = "Date cannot be in the past")
+    @NotBlank(message = "Date can't be blank")
     private String dueDate;
     @NotNull(message = "Priority can't be blank")
     private int priority;
