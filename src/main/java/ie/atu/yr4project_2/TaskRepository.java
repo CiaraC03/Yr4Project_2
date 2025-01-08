@@ -6,5 +6,5 @@ import org.springframework.data.mongodb.repository.Query;
 import java.util.Optional;
 
 public interface TaskRepository extends MongoRepository<Task, Long> {
-
+    Optional<Task> findByUserId(Long userId);
 }
