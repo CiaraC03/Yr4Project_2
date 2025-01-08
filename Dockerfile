@@ -2,13 +2,13 @@
 FROM  openjdk:17-jdk
 
 # Set the working directory in the container
-WORKDIR /app
+WORKDIR /Yr4Project_2
 
 # Copy the built application JAR file from your local machine to the container
-COPY target/*.jar app.jar
+COPY target/*.jar Yr4Project_2.jar
 
-# Mkae port 8080 available to the world outside this container
-EXPOSE 8080
+# Mkae port 8081 available to the world outside this container
+EXPOSE 8081
 
 # run the jar file
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-jar", "Yr4Project_2.jar"]
