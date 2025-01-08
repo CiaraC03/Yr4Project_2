@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class RabbitMQListener {
-    @RabbitListener(queues = "userQueues")
+    @RabbitListener(queues = "userQueue")
     public void TaskListener(User user){
         System.out.println(("Received message from User Service: " + user));
     }

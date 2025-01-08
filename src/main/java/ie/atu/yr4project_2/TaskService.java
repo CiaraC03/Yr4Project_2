@@ -39,13 +39,13 @@ public class TaskService {
         return taskRepository.findAll();
     }
 
-    public Task findTaskById(Long id) {
-        return taskRepository.findById(id).orElseThrow(
+    public Task findTaskById(Long userId) {
+        return taskRepository.findByUserId(userId).orElseThrow(
                 () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Could not find product."));
     }
 
-    public Task updateTask(Long id, Task updatedTask){
-        Task existingTask = findTaskById(id);
+    public Task updateTask(Long userId, Task updatedTask){
+        Task existingTask = findTaskById(userId);
 
         existingTask.setTitle(updatedTask.getTitle());
         existingTask.setDescription(updatedTask.getDescription());
@@ -55,9 +55,9 @@ public class TaskService {
 
     }
 
-    public List<Task> deleteTask(Long id) {
-        if(taskRepository.existsById(id)){
-            taskRepository.deleteById(id);
+    public List<Task> deleteTask(Long userId) {
+        if(taskRepository.existsById(userId)){
+            taskRepository.deleteById(userId);
         }
 
 
