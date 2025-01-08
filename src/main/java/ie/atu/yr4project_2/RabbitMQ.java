@@ -1,5 +1,6 @@
 package ie.atu.yr4project_2;
 
+import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.amqp.core.Queue;
@@ -7,11 +8,12 @@ import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 
+@EnableRabbit
 @Configuration
 public class RabbitMQ {
     @Bean
-    public Queue productQueue(){
-        return new Queue("taskQueue", false);
+    public Queue userQueue(){
+        return new Queue("userQueue", true);
     }
 
     @Bean

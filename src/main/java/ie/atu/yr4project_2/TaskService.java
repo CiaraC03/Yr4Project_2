@@ -34,7 +34,7 @@ public class TaskService {
         if (user == null) {
             throw new IllegalArgumentException("User with userId " + task.getUserId() + " does not exist.");
         }
-
+        validateTask(task);
         taskRepository.save(task);
         return taskRepository.findAll();
     }
@@ -63,6 +63,15 @@ public class TaskService {
 
         return null;
 
+    }
+
+    private void validateTask(Task task){
+        if (task.getTitle() == null || task.getTitle().isEmpty()){
+            throw new IllegalArgumentException("Title can't be blank");
+        }
+        if (task.getDescription() == null || task.getDescription().isEmpty()){
+            throw new IllegalArgumentException("Description can't be blank");
+        }
 
     }
 }
